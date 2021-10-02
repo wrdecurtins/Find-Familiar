@@ -6,12 +6,13 @@ const db = require("@/models");
 
 const app = express();
 
-db.sequelize.sync({ force: true }).then(() => {
-    console.log("Drop and re-sync db.")
-});
+db.sequelize.sync();
+// db.sequelize.sync({ force: 1 }).then(() => {
+//     console.log("Drop and re-sync db.")
+// });
 
 var corsOptions = {
-    origin: "http://localhost:8080"
+    origin: "http://localhost:8081"
 };
 
 app.use(cors(corsOptions));
@@ -22,10 +23,10 @@ app.use(bodyParser.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// simple route
-app.get("/", (req, res) => {
-    res.json({ message: "Welcome to bezkoder application."});
-});
+// // simple route
+// app.get("/", (req, res) => {
+//     res.json({ message: "Welcome to bezkoder application."});
+// });
 
 require("@/routes/test.routes")(app);
 
