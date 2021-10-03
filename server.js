@@ -12,8 +12,9 @@ db.sequelize.sync();
 // });
 
 var corsOptions = {
-    origin: "http://localhost:8081"
+    origin: process.env.CORS_URL
 };
+console.log(corsOptions.origin);
 
 app.use(cors(corsOptions));
 
@@ -29,10 +30,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // });
 
 require("@/routes/test.routes")(app);
-console.log("this is a change");
 
 // set port, listen for requests
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.LISTEN_PORT ;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);
 });
