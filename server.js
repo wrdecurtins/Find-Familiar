@@ -29,6 +29,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // });
 
 require("@/routes/test.routes")(app);
+console.log("this is a change");
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;

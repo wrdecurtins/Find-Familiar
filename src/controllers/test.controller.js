@@ -11,7 +11,7 @@ exports.create = (req, res) => {
         });
         return;
     }
-
+    console.log(req.body);
     // create a test
     const test = {
         title: req.body.title,
