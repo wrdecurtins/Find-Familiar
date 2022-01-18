@@ -1,18 +1,21 @@
 require('module-alias/register');
-const express = require("express");
-const bodyParser = require("body-parser");
-const cors = require("cors");
-const db = require("@/models");
+const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const db = require('@/models');
+const init_db = require('@/static/init_db');
 
 const app = express();
 
-db.sequelize.sync();
+db.sequelize.sync({ alter: true }).then((res) => {
+  init_db();
+});
 // db.sequelize.sync({ force: 1 }).then(() => {
-//     console.log("Drop and re-sync db.")
+//   console.log('Drop and re-sync db.');
 // });
 
 var corsOptions = {
-    origin: process.env.CORS_URL
+  origin: process.env.CORS_URL
 };
 console.log(corsOptions.origin);
 
@@ -29,10 +32,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //     res.json({ message: "Welcome to bezkoder application."});
 // });
 
-require("@/routes/test.routes")(app);
+require('@/routes/routes')(app);
+// require('@/routes/test.routes')(app);
+// require('@/routes/spell.routes')(app);
 
 // set port, listen for requests
 const PORT = process.env.LISTEN_PORT ;
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}.`);
+  console.log(`Server is running on port ${PORT}.`);
 });
