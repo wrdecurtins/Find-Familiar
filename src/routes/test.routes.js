@@ -24,7 +24,6 @@ module.exports = app => {
   //Delete all Tests
   router.delete('/', tests.deleteAll);
 
-
   // console.log(tests.create);
   app.use('/test', router);
 };
