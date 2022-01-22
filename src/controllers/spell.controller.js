@@ -9,7 +9,6 @@ exports.create = (req, res) => {
     });
     return;
   }
-  console.log(req.body);
 };
 
 exports.findAll = (req, res) => {

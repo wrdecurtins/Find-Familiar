@@ -1,30 +1,30 @@
 module.exports = app => {
   const tests = require('@/controllers/test.controller.js');
 
-  // var router = require("express").Router();
+  var router = require('express').Router();
 
   // Create a new Test
-  app.post('/', tests.create);
+  router.post('/', tests.create);
 
   //Retrieve all Test
-  app.get('/', tests.findAll);
+  router.get('/', tests.findAll);
 
   //Retrieve all published Tests
-  app.get('/published', tests.findAllPublished);
+  router.get('/published', tests.findAllPublished);
 
   //Retrieve a single Test with id
-  app.get('/:id', tests.findOne);
+  router.get('/:id', tests.findOne);
 
   //Update a Test with id
-  app.put('/:id', tests.update);
+  router.put('/:id', tests.update);
 
   //Delete a Test with id
-  app.delete('/:id', tests.delete);
+  router.delete('/:id', tests.delete);
 
   //Delete all Tests
-  app.delete('/', tests.deleteAll);
+  router.delete('/', tests.deleteAll);
 
 
   // console.log(tests.create);
-  // app.use("api/test", router);
+  app.use('/test', router);
 };

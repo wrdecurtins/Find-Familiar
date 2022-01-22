@@ -1,5 +1,9 @@
 module.exports = app => {
   const spells = require('@/controllers/spell.controller.js');
 
-  app.get('/spell', spells.findAll);
+  var router = require('express').Router();
+
+  router.get('/', spells.findAll);
+
+  app.use('/spell', router);
 };

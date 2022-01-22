@@ -8,7 +8,7 @@ const init_db = require('@/static/init_db');
 const app = express();
 
 db.sequelize.sync({ alter: true }).then((res) => {
-  init_db();
+  //init_db();
 });
 // db.sequelize.sync({ force: 1 }).then(() => {
 //   console.log('Drop and re-sync db.');
@@ -34,7 +34,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 require('@/routes/routes')(app);
 // require('@/routes/test.routes')(app);
-// require('@/routes/spell.routes')(app);
+require('@/routes/spell.routes')(app);
 
 // set port, listen for requests
 const PORT = process.env.LISTEN_PORT ;
