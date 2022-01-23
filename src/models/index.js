@@ -21,5 +21,6 @@ db.sequelize = sequelize;
 
 db.Test = require('./test.model.js')(sequelize, Sequelize);
 db.Spell = require('./spell.model.js')(sequelize, Sequelize);
+db.Feat = require('./feat.model.js')(sequelize, Sequelize);
 
 module.exports = db;
