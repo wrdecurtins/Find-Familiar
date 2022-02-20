@@ -1,7 +1,7 @@
-module.exports = app => {
-  const feats = require('@/controllers/feat.controller');
-
-  var router = require('express').Router();
+import feats from '@/controllers/feat.controller';
+import express from 'express';
+export default (app) => {
+  var router = express.Router();
 
   router.get('/', feats.findAll);
 

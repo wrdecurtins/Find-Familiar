@@ -1,10 +1,10 @@
-module.exports = {
-  HOST: 'localhost',
-  USER: 'will',
-  PASSWORD: 'j',
+export default {
+  HOST: process.env.DB_HOST,
+  USER: process.env.DB_USER,
+  PASSWORD: process.env.DB_PASS,
   DB: 'carcerem_companion',
-  dialect: 'mysql',
-  port: 3307,
+  dialect: process.env.DB_DIALECT,
+  port: process.env.DB_PORT,
   pool: {
     max: 5,
     min: 0,

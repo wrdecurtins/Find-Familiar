@@ -1,7 +1,8 @@
-module.exports = app => {
-  const tests = require('@/controllers/test.controller.js');
+import tests from '@/controllers/test.controller.js';
+import express from 'express';
+export default (app) => {
 
-  var router = require('express').Router();
+  var router = express.Router();
 
   // Create a new Test
   router.post('/', tests.create);

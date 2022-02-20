@@ -1,9 +1,10 @@
 require('module-alias/register');
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const db = require('@/models');
-const init_db = require('@/static/init_db');
+import express from 'express';
+import bodyParser from 'body-parser';
+import cors from 'cors';
+import db from '@/models';
+import init_db from '@/static/init_db';
+import routes from '@/routes/routes';
 
 const app = express();
 
@@ -32,7 +33,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //     res.json({ message: "Welcome to bezkoder application."});
 // });
 
-require('@/routes/routes')(app);
+routes(app);
 // require('@/routes/test.routes')(app);
 // require('@/routes/spell.routes')(app);
 

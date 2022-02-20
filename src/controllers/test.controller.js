@@ -1,9 +1,9 @@
-const db = require('@/models');
+import db from '@/models';
 const Test = db.Test;
 const Op = db.sequelize.Op;
 
 //Create and Save a new Test
-exports.create = (req, res) => {
+const create = (req, res) => {
   // Validate request
   if (!req.body.title) {
     res.status(400).send({
@@ -32,7 +32,7 @@ exports.create = (req, res) => {
 };
 
 //Retrieve all Tests from the database.
-exports.findAll = (req, res) => {
+const findAll = (req, res) => {
   const title = req.query.title;
   var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
 
@@ -49,7 +49,7 @@ exports.findAll = (req, res) => {
 };
 
 // Find a single test with an id
-exports.findOne = (req, res) => {
+const findOne = (req, res) => {
   const id = req.params.id;
 
   Test.findByPk(id)
@@ -64,7 +64,7 @@ exports.findOne = (req, res) => {
 };
 
 // Update a test by the id in the request
-exports.update = (req, res) => {
+const update = (req, res) => {
   const id = req.params.id;
 
   Test.update(req.body, {
@@ -89,7 +89,7 @@ exports.update = (req, res) => {
 };
 
 // Delete a test with the specified id in the request
-exports.delete = (req, res) => {
+const remove = (req, res) => {
   const id = req.params.id;
 
   Test.destroy({
@@ -114,7 +114,7 @@ exports.delete = (req, res) => {
 };
 
 // Delete all tests from the database.
-exports.deleteAll = (req, res) => {
+const deleteAll = (req, res) => {
   Test.destroy({
     where: {},
     trunicate: false
@@ -131,7 +131,7 @@ exports.deleteAll = (req, res) => {
 };
 
 // Find all published tests
-exports.findAllPublished = (req, res) => {
+const findAllPublished = (req, res) => {
   Test.findAll({ where: { published: true } })
     .then(data => {
       res.send(data);
@@ -142,4 +142,14 @@ exports.findAllPublished = (req, res) => {
                     err.message || 'Some error occurred while retrieving tests'
       });
     });
+};
+
+export default {
+  create,
+  findAll,
+  findOne,
+  update,
+  delete: remove,
+  deleteAll,
+  findAllPublished,
 };

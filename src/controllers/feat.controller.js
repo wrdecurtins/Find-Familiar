@@ -1,9 +1,13 @@
-const db = require('@/models');
+import db from '@/models';
 const Feat = db.Feat;
 const Op = db.sequelize.Op;
 
-exports.findAll = (req, res) => {
+const findAll = (req, res) => {
   Feat.findAll().then(data => {
     res.send(data);
   });
+};
+
+export default {
+  findAll
 };

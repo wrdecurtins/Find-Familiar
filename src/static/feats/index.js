@@ -1,5 +1,5 @@
-const feats = require('./feats.json');
+import feats from './feats.json';
 
-module.exports = [
+export default [
   ...feats.feat
 ];

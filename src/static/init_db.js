@@ -1,10 +1,10 @@
-const db = require('@/models');
+import db from '@/models';
 const models = {Spell: db.Spell, Feat: db.Feat};
-const Spells = require('@/static/spells');
-const Feats = require('@/static/feats');
-const sequelize_fixtures = require('sequelize-fixtures');
-const prepFixture = require('@/modules/fixture');
-module.exports = () => {
+import Spells from '@/static/spells';
+import Feats from '@/static/feats';
+import sequelize_fixtures from 'sequelize-fixtures';
+import prepFixture from '@/modules/fixture';
+export default () => {
   sequelize_fixtures.loadFixtures(prepFixture(Spells, 'Spell', true), models);
   sequelize_fixtures.loadFixtures(prepFixture(Feats, 'Feat', true), models);
 };

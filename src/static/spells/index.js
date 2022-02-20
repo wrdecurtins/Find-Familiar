@@ -1,14 +1,14 @@
-const phb = require('./spells-phb.json');
-const ai = require('./spells-ai.json');
-const egw = require('./spells-ftd.json');
-const ftd = require('./spells-ftd.json');
-const ggr = require('./spells-ggr.json');
-const idrotf = require('./spells-idrotf.json');
-const scc = require('./spells-scc.json');
-const tce = require('./spells-tce.json');
-const xge = require('./spells-xge.json');
+import phb from './spells-phb.json';
+import ai from './spells-ai.json';
+import egw from './spells-ftd.json';
+import ftd from './spells-ftd.json';
+import ggr from './spells-ggr.json';
+import idrotf from './spells-idrotf.json';
+import scc from './spells-scc.json';
+import tce from './spells-tce.json';
+import xge from './spells-xge.json';
 
-module.exports = [
+export default [
   ...phb.spell,
   ...xge.spell,
   ...ai.spell,

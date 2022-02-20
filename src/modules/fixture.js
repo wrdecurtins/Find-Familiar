@@ -1,4 +1,4 @@
-module.exports = (data, modelType, autoIncrement = false) => {
+export default (data, modelType, autoIncrement = false) => {
   let fixtures = [];
   var i = 1;
   data.forEach(item => {
